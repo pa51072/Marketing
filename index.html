@@ -7,25 +7,16 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
+
         gtag('config', 'G-S6F0EB736Q');
     </script>
 
     <!-- Google Tag Manager -->
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-WTNSL466');
-    </script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WTNSL466');</script>
     <!-- End Google Tag Manager -->
 
     <meta charset="UTF-8">
@@ -50,7 +41,7 @@
     <!-- Ograniczona oferta -->
     <section class="limited-offer">
         <h2>Ostatnie egzemplarze!</h2>
-        <p>Promocja kończy się za <span id="countdown">2 dni</span></p>
+        <p>Promocja kończy się za <span id="countdown">24:00:00</span></p>
     </section>
 
     <!-- Korzyści -->
@@ -86,6 +77,32 @@
         <p>Strona stworzona w celach edukacyjnych</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Skrypt odliczania czasu promocji
+        function startCountdown(duration, display) {
+            let timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = Math.floor(timer / 3600);
+                minutes = Math.floor((timer % 3600) / 60);
+                seconds = timer % 60;
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = hours + ":" + minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = 0;
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            const twentyFourHours = 24 * 60 * 60; // 24 godzin w sekundach
+            const display = document.querySelector('#countdown');
+            startCountdown(twentyFourHours, display);
+        };
+    </script>
 </body>
 </html>
