@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep Internetowy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Google Tag Manager -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6F0EB736Q"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -11,26 +17,6 @@
         gtag('config', 'G-S6F0EB736Q');
     </script>
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WTNSL466');</script>
-    <!-- End Google Tag Manager -->
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sklep Internetowy</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTNSL466"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
-    <!-- Nagłówek -->
     <header>
         <h1>Najlepsze produkty dla Ciebie!</h1>
         <p>Nie czekaj, skorzystaj z wyjątkowych okazji już teraz!</p>
@@ -38,7 +24,6 @@
         <button class="cta-button">Sprawdź ofertę</button>
     </header>
 
-    <!-- Ograniczona oferta -->
     <section class="limited-offer">
         <h2>Ostatnie egzemplarze!</h2>
         <p>Promocja kończy się za <span id="countdown">24:00:00</span></p>
@@ -54,7 +39,6 @@
         </ul>
     </section>
 
-    <!-- Wiarygodność -->
     <section class="trust">
         <h2>O nas piszą</h2>
         <div class="logos">
@@ -64,18 +48,25 @@
         <p>Kliknij, aby dowiedzieć się więcej.</p>
     </section>
 
-    <!-- Zdjęcia -->
     <section class="gallery">
         <h2>Nasze produkty</h2>
         <img src="bottle1.jpg" alt="Produkt 1 w użyciu">
         <img src="bottle2.jpg" alt="Produkt 2 w użyciu">
     </section>
 
-    <!-- Stopka -->
     <footer>
         <p>Kontakt: kontakt@sklep.pl | Gdzie jesteśmy: Szczecin, Polska </p>
         <p>Strona stworzona w celach edukacyjnych</p>
     </footer>
+
+    <!-- Okno pop-up -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span id="popup-close" class="popup-close">&times;</span>
+            <h2>Witaj w naszym sklepie!</h2>
+            <p>Dołącz do naszej społeczności i zgarnij 10% rabatu na pierwszy zakup!</p>
+        </div>
+    </div>
 
     <script>
         // Skrypt odliczania czasu promocji
@@ -102,6 +93,16 @@
             const twentyFourHours = 24 * 60 * 60; // 24 godzin w sekundach
             const display = document.querySelector('#countdown');
             startCountdown(twentyFourHours, display);
+
+            // Wyświetlenie okna pop-up po 5 sekundach
+            setTimeout(function () {
+                document.getElementById('popup').style.display = 'flex';
+            }, 5000);
+
+            // Zamknięcie okna pop-up
+            document.getElementById('popup-close').addEventListener('click', function () {
+                document.getElementById('popup').style.display = 'none';
+            });
         };
     </script>
 </body>
